@@ -20,7 +20,7 @@ export class CarsService {
   constructor(
     @InjectRepository(Car) private readonly carRepository: Repository<Car>,
     @InjectRepository(Reservation)
-    private readonly reservationRepository: Repository<Reservation>,
+    private readonly reservationRepository: Repository<Reservation>
   ) {}
 
   create(createCarDto: CreateCarDto) {
@@ -35,7 +35,7 @@ export class CarsService {
     startDate: Date,
     endDate: Date,
     skip: number,
-    take: number,
+    take: number
   ) {
     //find all the overlapping reservations with the given date range
 
@@ -46,11 +46,11 @@ export class CarsService {
       .select("car.id")
       .where(
         "reservation.startDate >= :startDate and reservation.startDate < :endDate",
-        { startDate: startDate, endDate: endDate },
+        { startDate: startDate, endDate: endDate }
       )
       .andWhere(
         "reservation.endDate <= :endDate and reservation.endDate > :startDate",
-        { startDate: startDate, endDate: endDate },
+        { startDate: startDate, endDate: endDate }
       )
       .getMany();
 
@@ -89,16 +89,16 @@ export class CarsService {
       .select("car.id")
       .where(
         "reservation.startDate >= :startDate and reservation.startDate < :endDate",
-        { startDate: startDate, endDate: endDate },
+        { startDate: startDate, endDate: endDate }
       )
       .andWhere(
         "reservation.endDate <= :endDate and reservation.endDate > :startDate",
-        { startDate: startDate, endDate: endDate },
+        { startDate: startDate, endDate: endDate }
       )
       .getMany();
 
     const overlappingReservations = overlappingReservationsQ.map(
-      (car) => car.id,
+      (car) => car.id
     );
 
     return overlappingReservations;

@@ -31,7 +31,7 @@ export class QueryDto {
   @IsOptional()
   public minPrice: number;
 
-  @Transform(({ value }) => toNumber(value, { min: 1 }))
+  @Transform(({ value }) => toNumber(value))
   @IsNumber()
   @IsOptional()
   public maxPrice: number;

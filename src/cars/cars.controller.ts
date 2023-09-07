@@ -39,7 +39,7 @@ export class CarsController {
         query.startDate,
         query.endDate,
         skip,
-        take,
+        take
       );
     } catch (error) {
       return NotFoundException;
