@@ -13,14 +13,11 @@ import {
 import { Car } from "./entities/car.entity";
 import { CreateCarDto } from "./dto/create-car.dto";
 import { UpdateCarDto } from "./dto/update-car.dto";
-import { Reservation } from "./entities/reservation.entity";
 
 @Injectable()
 export class CarsService {
   constructor(
-    @InjectRepository(Car) private readonly carRepository: Repository<Car>,
-    @InjectRepository(Reservation)
-    private readonly reservationRepository: Repository<Reservation>
+    @InjectRepository(Car) private readonly carRepository: Repository<Car>
   ) {}
 
   create(createCarDto: CreateCarDto) {
